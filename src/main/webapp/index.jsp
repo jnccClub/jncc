@@ -6,24 +6,18 @@
   To change this template use File | Settings | File Templates.  
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
 <title></title>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/myjs.js"></script>
+<link href="<s:url value='/css/main.css' encode='false' includeParams='none'/>" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<div>请输入用户：</div>
-	<div>
-		<form id="subUserForm">
-			<input type="text" name="userInfo.id" id="id" /> <input type="text"
-				name="userInfo.name" id="name" />
-		</form>
-	</div>
-	<div>
-		<input id="addUser" type="button" value="添加" />
-	</div>
-	<br>
-	<div id="allUser">input_user:</div>
+
+
+	<jsp:include page="navBar/navigationBar.jsp"></jsp:include>
+	<jsp:include page="navBar/test.jsp"></jsp:include>
+
 </body>
 </html>

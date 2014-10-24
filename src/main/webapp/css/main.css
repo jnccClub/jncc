@@ -1,0 +1,30 @@
+@import url(common/bootstrap.css);
+@import url(homepage/homepage.css);
+
+body div {
+	margin-left: AUTO;
+	margin-right: AUTO;
+	background-color: #e0e0e0;
+	/*  *position: relative;*/
+	/*  *z-index: 10;*/
+	margin-top: 0px;
+	width: 960px;
+	/*  margin: 10px 3% 0 3%;*/
+	text-align: center;
+}
+
+.loginFrame{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:700px;
+    height:400px;
+    margin-top:-150px;
+    margin-left:-350px;
+
+    border:1px solid red;
+    line-height:30px;
+    font-size:16px;
+    text-align:center;
+    background-image: url("../image/background/loginBg.jpg")
+}
