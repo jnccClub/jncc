@@ -1,4 +1,4 @@
-package org.nuaa.persistence;
+package org.jncc.persistence;
 
 import java.util.List;
 

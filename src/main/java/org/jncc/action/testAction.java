@@ -1,4 +1,4 @@
-package org.nuaa.action;
+package org.jncc.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 

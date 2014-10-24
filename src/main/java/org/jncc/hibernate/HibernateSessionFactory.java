@@ -1,4 +1,4 @@
-package org.nuaa.hibernate;
+package org.jncc.hibernate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

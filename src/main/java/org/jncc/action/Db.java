@@ -1,4 +1,4 @@
-package org.nuaa.action;
+package org.jncc.action;
 
 import java.sql.*;  
 /** 

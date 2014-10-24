@@ -1,4 +1,4 @@
-package org.nuaa.persistence;
+package org.jncc.persistence;
 
 public class TestDb {
 	private String username;
