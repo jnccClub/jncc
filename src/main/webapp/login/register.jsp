@@ -16,11 +16,12 @@ html,body {
 	margin: 0px;
 	height: 100%;
 	color: #0000FF;
+	
 }
 
 .mesWindow {
 	border: #666 1px solid;
-	background: #fff;
+	background: #00AA00;
 }
 
 .mesWindowTop {
@@ -31,6 +32,8 @@ html,body {
 	font-weight: bold;
 	text-align: left;
 	font-size: 12px;
+	font-family: '微软雅黑','宋体','隶书','华文中宋','仿宋';
+	
 }
 
 .mesWindowContent {
@@ -38,18 +41,6 @@ html,body {
 	font-size: 12px;
 }
 
-.mesWindow .close {
-	height: 15px;
-	width: 28px;
-	border: none;
-	cursor: pointer;
-	text-decoration: underline;
-	background: #fff
-}
-.close{
-	background-image: url("../image/background/loginBg.jpg");
-	background-color: #e0e0e0;
-}
 </style>
 
 <script>
@@ -94,7 +85,7 @@ html,body {
 		mesW.className = "mesWindow";
 		mesW.innerHTML = "<div class='mesWindowTop'><table width='100%' height='100%'><tr><td>"
 				+ wTitle
-				+ "</td><td style='width:18px;'><a href='#none' onclick='closeWindow()'><img alt='关闭' id='img1' src='loginBg.jpg' style='float: center;width:10px;'/></a></td></tr></table></div><div class='mesWindowContent' id='mesWindowContent'>"
+				+ "</td><td style='width:18px;'><a href='#none' onclick='closeWindow()'><img alt='关闭' id='img1' src='close.jpg' style='float: center;width:18px;'/></a></td></tr></table></div><div class='mesWindowContent' id='mesWindowContent'>"
 				+ content + "</div><div class='mesWindowBottom'></div>";
 		styleStr = "width:" + wWidth + "px;height:" + wHeight
 				+ "px;position:absolute;top:50%;left:50%;margin-left:-"
@@ -128,7 +119,7 @@ html,body {
 	function testMessageBox(ev) {
 		var objPos = mousePosition(ev);
 		messContent = "<div style='padding:20px 0 20px 0;text-align:center'>信息</div>";
-		showMessageBox('窗口标题', messContent, objPos, 400, 200);
+		showMessageBox('用户注册', messContent, objPos, 400, 200);
 	}
 </script>
 </head>
