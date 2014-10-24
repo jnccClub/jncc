@@ -15,13 +15,13 @@ html,body {
 	font-size: 12px;
 	margin: 0px;
 	height: 100%;
-	color: #0000FF;
+	color: #00BFFF;
 	
 }
 
 .mesWindow {
 	border: #666 1px solid;
-	background: #00AA00;
+	background: #FFFAF0;
 }
 
 .mesWindowTop {
@@ -119,7 +119,7 @@ html,body {
 	function testMessageBox(ev) {
 		var objPos = mousePosition(ev);
 		messContent = "<div style='padding:20px 0 20px 0;text-align:center'>信息</div>";
-		showMessageBox('用户注册', messContent, objPos, 400, 200);
+		showMessageBox('用户注册', messContent, objPos, 600, 400);
 	}
 </script>
 </head>
