@@ -45,8 +45,9 @@ public class dbSession {
 	}
 
 	// 插入
-	public static void insert(Object obj) {		
+	public static boolean insert(Object obj) {		
 		session.save(obj);
+		return true;
 	}
 
 	static SessionFactory sessionFactory;
@@ -69,7 +70,7 @@ public class dbSession {
 		tx = session.beginTransaction();
 	}
 
-	private static void close() {
+	public static void close() {
 		tx.commit();
 		session.close();
 
@@ -77,7 +78,7 @@ public class dbSession {
 
 	public static void main(String[] args) {
 		init();
-//		update();
+		// update();
 		close();
 	}
 }

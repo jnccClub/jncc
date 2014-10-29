@@ -1,19 +1,22 @@
-<?xml version='1.0' encoding='UTF-8'?>  
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="org.jncc.base.user.UserInfo" table="e_member">
-		<id name="username" column="username">
-			<generator class="assigned" />
-		</id>
-		<property name="realname" column="realname" />
-		<property name="password" column="password" />
-		<property name="sex" column="sex" />
-		<property name="birth" column="birth" />
-		<property name="schoolno" column="schoolno" />
-		<property name="phoneno" column="phoneno" />
-		<property name="email" column="email" />
-		<property name="qq" column="qq" />
-		<property name="preference" column="preference" />
-		<property name="hobby" column="hobby" />
-	</class>
-</hibernate-mapping>  
+ <class name="org.jncc.base.user.UserInfo" table="e_member">
+  <id column="username" name="username">
+   <generator class="assigned"/>
+  </id>
+  <property column="realname" generated="never" lazy="false" name="realname"/>
+  <property column="password" generated="never" lazy="false" name="password"/>
+  <property column="sex" generated="never" lazy="false" name="sex"/>
+  <property column="birth" generated="never" lazy="false" name="birth"/>
+  <property column="schoolno" generated="never" lazy="false" name="schoolno"/>
+  <property column="phoneno" generated="never" lazy="false" name="phoneno"/>
+  <property column="email" generated="never" lazy="false" name="email"/>
+  <property column="qq" generated="never" lazy="false" name="qq"/>
+  <property column="preference" generated="never" lazy="false" name="preference"/>
+  <property column="hobby" generated="never" lazy="false" name="hobby"/>
+ <property column="selfIntroduce" generated="never" lazy="false" name="selfIntroduce"/>
+  
+ </class>
+</hibernate-mapping>

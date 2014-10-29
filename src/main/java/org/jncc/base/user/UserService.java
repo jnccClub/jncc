@@ -24,6 +24,9 @@ public class UserService {
 
 	public void addUser(UserInfo userInfo) {
 		dbSession.init();
+		dbSession.insert(userInfo);
+		dbSession.close();
+		
 		
 	}
 }

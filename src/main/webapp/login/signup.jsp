@@ -9,7 +9,6 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <script type="text/javascript">
 	function CheckForm() {
-
 		if (document.userinfo.username.value == "") {
 			alert("请输入姓名,姓名不能为空！");
 			document.userinfo.username.focus();
@@ -21,16 +20,42 @@
 			return false;
 		}
 	}
+
+	function correctCheckboxJson(formID, checkboxNameList) {
+		var paramArray = $("#" + formID).serializeArray();
+		var paramSerialize = "";
+		var lastFieldName = "";
+		for (var i = 0; i < checkboxNameList.length; i++) {
+			$.each(paramArray, function(i, field) {
+				if ((lastFieldName != "") && (lastFieldName != field.name)) {
+					paramSerialize += "&";
+				}
+				if (lastFieldName != field.name) {
+					lastFieldName = field.name;
+					paramSerialize += field.name;
+					paramSerialize += "=";
+					paramSerialize += field.value;
+				} else {
+					paramSerialize += ";";
+					paramSerialize += field.value;
+				}
+			});
+		}
+		return paramSerialize;
+	}
 </script>
 <script>
 	$(document).ready(
-			
-			
+
 			function() {
 				$("#addUser").click(
 						function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
-							var params = $("#subUserForm").fixedSerialize();							
-							
+							var checkboxNameList = new Array();
+							checkboxNameList[0] = "userGift";
+							//var params = correctCheckboxJson("subUserForm",checkboxNameList);
+							//var params = $("#subUserForm").serialize();
+							var params = $("#subUserForm").serializeArray();
+
 							$.ajax({
 								url : 'user/add_user.action',
 								type : 'post',
@@ -70,62 +95,66 @@
 			</tr>
 			<tr>
 				<td width="37%" align="right">Username：</td>
-				<td width="61%"><input type="text" name="username" value="jncc"
-					size="13"></td>
+				<td width="61%"><input type="text" name="userInfo.username"
+					value="jncc" size="13"></td>
 			</tr>
+
 			<tr>
 				<td width="37%" align="right">Realname：</td>
-				<td width="61%"><input type="text" name="realname"
+				<td width="61%"><input type="text" name="userInfo.realname"
 					value="计算中心俱乐部" size="13"></td>
 			</tr>
+
 			<tr>
 				<td width="37%" align="right">Password：</td>
-				<td width="61%"><input type="password" name="userPassword"
+				<td width="61%"><input type="password" name="userInfo.password"
 					size="20" value="jncc"></td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">Sex：</td>
-				<td width="61%"><input type="radio" value="True" checked
-					name="Sex">男 <input type="radio" name="Sex" value="False">女</td>
+				<td width="61%"><input type="radio" value="male" checked
+					name="userInfo.sex">男 <input type="radio"
+					name="userInfo.sex" value="female">女</td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">Birth：</td>
-				<td width="61%"><input type="text" name="userBirth"
-					id="timeBirth" onclick="MyCalendar.SetDate(this)"
-					value="1990-01-01" /></td>
+				<td width="61%"><input type="text" name="userInfo.birth"
+					id="timeBirth" onclick="MyCalendar.SetDate(this)" value="1990-01-01" /></td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">SchoolNo：</td>
-				<td width="61%"><input type="text" name="userNo" size="9"
-					value="161210327"></td>
+				<td width="61%"><input type="text" name="userInfo.schoolno"
+					size="9" value="161210327"></td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">PhoneNo：</td>
-				<td width="61%"><input type="text" name="userPhone" size="9"
-					value="13888888888"></td>
+				<td width="61%"><input type="text" name="userInfo.phoneno"
+					size="9" value="13888888888"></td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">Email：</td>
-				<td width="61%"><input type="text" name="userMail" size="9"
-					value="zhuhaohan@nuaa.edu.cn"></td>
+				<td width="61%"><input type="text" name="userInfo.email"
+					size="9" value="zhuhaohan@nuaa.edu.cn"></td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">QQ：</td>
-				<td width="61%"><input type="text" name="userQQ" size="9"
+				<td width="61%"><input type="text" name="userInfo.qq" size="9"
 					value="825857104"></td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">Preference：</td>
-				<td width="61%"><input type="checkbox" name="userGift"
-					value="HTML" checked>Html&nbsp; <input type="checkbox"
-					name="userGift" value="CSS" checked>CSS&nbsp;<input
-					type="checkbox" name="userGift" value="JSP">JSP&nbsp;<input
-					type="checkbox" name="userGift" value="SERVER">SERVER&nbsp;
-					<input type="checkbox" name="userGift" value="UCD" checked>UCD</td>
+				<td width="61%"><input type="checkbox"
+					name="userInfo.preference" value="HTML" checked>Html&nbsp;
+					<input type="checkbox" name="userInfo.preference" value="CSS"
+					checked>CSS&nbsp;<input type="checkbox"
+					name="userInfo.preference" value="JSP">JSP&nbsp;<input
+					type="checkbox" name="userInfo.preference" value="SERVER">SERVER&nbsp;
+					<input type="checkbox" name="userInfo.preference" value="UCD"
+					checked>UCD</td>
 			</tr>
 			<tr>
 				<td width="37%" align="right">Hobbies：</td>
-				<td width="40%"><select size="1" name="userHobby">
+				<td width="40%"><select size="1" name="userInfo.hobby">
 						<option selected value="javaDev">JAVA开发</option>
 						<option value="cplusplusDev">C++开发</option>
 						<option value="pageDev">网页语言</option>
@@ -133,16 +162,17 @@
 			</tr>
 			<tr>
 				<td width="37%" align="right">Self-introduce：</td>
-				<td width="61%"><textarea rows="9" name="userGrjs" cols="34"></textarea></td>
+				<td width="61%"><textarea rows="9"
+						name="userInfo.selfIntroduce" cols="34"></textarea></td>
 			</tr>
-			<tr>
-				<td colspan="2" height="38">
-					<p align="center">
-						<input type="submit" value="Signup" name="B1" id="addUser">
-						<input type="reset" value="Reset" name="B2">
-					</p>
-				</td>
-			</tr>
+		<tr>
+			<td colspan="2" height="38">
+				<p align="center">
+					<input type="submit" value="Signup" id="addUser"> <input
+						type="reset" value="Reset">
+				</p>
+			</td>
+		</tr>
 		</form>
 	</table>
 </div>
