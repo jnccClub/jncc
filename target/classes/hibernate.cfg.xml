@@ -15,7 +15,8 @@
 		<property name="connection.username">flyerjune</property>
 		<property name="connection.password">fj</property>
 		<mapping resource="user.hbm.xml" />
-    
+		<mapping resource="userSignUp.hbm.xml" />
+    	
     </session-factory>
 
 </hibernate-configuration>

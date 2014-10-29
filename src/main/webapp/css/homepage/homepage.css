@@ -3,6 +3,7 @@
 	display: inline-block;
 	width: 720px;
 	height: 120px;
+	float:left;
 }
 .logo IMG{
 	margin-left: 0px;
@@ -43,7 +44,3 @@
 .alert li {
 	list-style: none;
 }
-.errorMessage, label.errorLabel {
-	color: red;
-}
-label.errorLabel

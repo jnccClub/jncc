@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.jncc.base.user.UserInfo" table="e_member">
+		<id name="username" column="username">
+			<generator class="assigned" />
+		</id>
+		<property name="realname" column="realname" />
+		<property name="password" column="password" />
+		<property name="sex" column="sex" />
+		<property name="birth" column="birth" />
+		<property name="schoolno" column="schoolno" />
+		<property name="phoneno" column="phoneno" />
+		<property name="email" column="email" />
+		<property name="qq" column="qq" />
+		<property name="preference" column="preference" />
+		<property name="hobby" column="hobby" />
+	</class>
+</hibernate-mapping>  

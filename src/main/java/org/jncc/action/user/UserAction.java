@@ -1,4 +1,7 @@
-package org.jncc.action;
+package org.jncc.action.user;
+
+import org.jncc.base.user.UserInfo;
+import org.jncc.base.user.UserService;
 
 import com.opensymphony.xwork2.ActionSupport;
 

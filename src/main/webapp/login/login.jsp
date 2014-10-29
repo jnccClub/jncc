@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<div class="loginFrame" style="text-align:center;">
 
-<div class="loginFrame">
 	<s:form action="doLogin" method="POST" >
 		<tr>
 			<td colspan="2"><s:actionerror /> <s:fielderror /></td>
@@ -20,4 +20,5 @@
 					value="Reset" theme="simple" cssClass="btn btn-primary"/></td>
 		</tr>
 	</s:form>
+
 </div>

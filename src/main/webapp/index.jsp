@@ -9,15 +9,20 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<title></title>
+<title>旺旺网</title>
 <script type="text/javascript" src="js/jquery.js"></script>
-<link href="<s:url value='/css/main.css' encode='false' includeParams='none'/>" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/Calendar4.js"></script>
+<link
+	href="<s:url value='/css/main.css' encode='false' includeParams='none'/>"
+	rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-
-
+	
 	<jsp:include page="navBar/navigationBar.jsp"></jsp:include>
-	<jsp:include page="navBar/test.jsp"></jsp:include>
+	<%--<jsp:include page="login/login.jsp"></jsp:include> --%>
+	<jsp:include page="login/signup.jsp"></jsp:include>
+	
+
 
 </body>
 </html>
