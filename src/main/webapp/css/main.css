@@ -31,6 +31,22 @@ body div {
 }
 
 .signupFrame{
-	background-image: url("../image/background/bg.jpg")
+	background-image: url("../image/background/bg.jpg");
+	marginleft:0 auto;
+	width:450px;
 }
 
+.signupLabel{
+	width:25%;
+	text-align:right;
+}
+
+.signupInput{
+	width:35%;
+}
+.signupTips{
+	width:18%;
+	text-align:left;
+	font-family: '微软雅黑','宋体','隶书','华文中宋','仿宋';
+	font-size: 12px;
+}
