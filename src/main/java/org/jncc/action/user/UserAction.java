@@ -13,7 +13,7 @@ public class UserAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	UserService us = new UserService();
 	private resultCause resultCause = new resultCause();
-
+	private UserInfo userInfo;
 
 
 	public resultCause getResultCause() {
@@ -24,9 +24,17 @@ public class UserAction extends ActionSupport {
 	public void setResultCause(resultCause resultCause) {
 		this.resultCause = resultCause;
 	}
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
 
 
-	public String addUser() {
+
+	public String add() {
 		/*
 		 * userInfo = new UserInfo(); userInfo.setId(7); userInfo.setName("张7");
 		 */
@@ -39,15 +47,13 @@ public class UserAction extends ActionSupport {
 		resultCause.setResultDesc("test");
 		return "ADD_SUCCESS";
 	}
-
-
-	public UserInfo getUserInfo() {
-		return userInfo;
+	
+	public String checkUsername() {
+		System.out.println("comehere!!!!! checkUsername");
+		resultCause.setResultCode("200 OK");
+		resultCause.setResultDesc("checkUsername");
+		return "checkName";
 	}
 
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
-	}
 
-	private UserInfo userInfo;
 }

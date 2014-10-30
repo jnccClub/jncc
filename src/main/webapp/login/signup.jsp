@@ -46,7 +46,6 @@
 </script>
 <script>
 	$(document).ready(
-
 			function() {
 				$("#addUser").click(
 						function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
@@ -57,17 +56,49 @@
 							var params = $("#subUserForm").serializeArray();
 
 							$.ajax({
-								url : 'user/add_user.action',
+								url : 'user/user_add.action',
 								type : 'post',
 								data : params,
 								dataType : 'json',
 								success : function(data) {
-										alert("something happened!")
-
-
+										alert("addUser happened!");
 								}
 							});
 						});
+				$("input[name='userInfo.username']").blur(
+						function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
+							var params = $("input[name='userInfo.username']").serializeArray();
+
+							$.ajax({
+								url : 'user/user_checkUsername.action',
+								type : 'post',
+								data : params,
+								dataType : 'json',
+								beforeSend: loadingShow,
+								success : function(data) {
+										alert("something happened!");
+								}
+							});
+						});
+				$("input[name='userInfo.realname']").blur(
+						function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
+							var params = $("input[name='userInfo.realname']").serializeArray();
+
+							$.ajax({
+								url : 'user/user_checkUsername',
+								type : 'post',
+								data : params,
+								dataType : 'json',
+								success : function(data) {
+										alert("something happened!");
+								}
+							});
+						});
+				function loadingShow()
+				{
+					//$("#nameValidate").addClass("loadingIcon");
+					$("#nameValidate").show();
+				}
 			});
 </script>
 
@@ -90,7 +121,7 @@
 				<td >Username：</td>
 				<td><input type="text" name="userInfo.username" value="jncc"
 					size="13"></td>
-				<td id="nameValidate" >姓名已注侧</td>
+				<td id="nameValidate" style="display:none">姓名已注册</td>
 				
 			</tr>
 
