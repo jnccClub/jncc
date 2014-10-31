@@ -12,21 +12,21 @@ import org.jncc.persistence.dbSession;
 public class UserService {
 
 	public List<UserInfo> getUser() {
-		Connection conn = Db.createConnection();
 
-		UserInfo userInfo = null;
 		List<UserInfo> users = new ArrayList<UserInfo>();
-		
-		
-		
 		return users;
 	}
 
 	public void addUser(UserInfo userInfo) {
-		dbSession.init();
 		dbSession.insert(userInfo);
 		dbSession.close();
-		
-		
+	}
+
+	public boolean IsExistUser(Class<UserInfo> clazz, String userName) {
+		boolean IsExist = false;
+		if (dbSession.load(clazz, userName) != null)
+			IsExist = true;
+		dbSession.close();
+		return IsExist;
 	}
 }
