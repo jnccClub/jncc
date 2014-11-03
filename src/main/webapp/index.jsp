@@ -17,11 +17,33 @@
 	rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
+	<script>
+		var currentShowID = "#mainFrame_Body";
+		var userName = "test";
+		$(document).ready(function() {
+			$("#loginEntry a").click(function() {
+				reNewMainId("#mainFrame_Login");
+			});
+
+			$("#logOutEntry").click(function() {
+				alert("come to relogin");
+				username = "";
+				$("#loginEntry").html('<a href="javarscript:(0)" >登录/注册</a>');
+				$("#logOutEntry").hide();
+			});
+		});
+		function reNewMainId(newId) {
+			$(currentShowID).hide();
+			currentShowID = newId;
+			$(currentShowID).show();
+		}
 	
+		
+	</script>
 	<jsp:include page="navBar/navigationBar.jsp"></jsp:include>
-	<%--<jsp:include page="login/login.jsp"></jsp:include> --%>
-	<jsp:include page="login/signup.jsp"></jsp:include>
-	
+	<jsp:include page="login/mainFrame_Login.jsp"></jsp:include>
+	<jsp:include page="login/mainFrame_SignUp.jsp"></jsp:include>
+	<jsp:include page="bodyContent/mainFrame_Body.jsp"></jsp:include>
 
 
 </body>

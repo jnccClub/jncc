@@ -1,9 +1,15 @@
 package org.jncc.action.user;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.jncc.base.cause.resultCause;
 import org.jncc.base.user.UserInfo;
 import org.jncc.base.user.UserService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport {
@@ -14,6 +20,7 @@ public class UserAction extends ActionSupport {
 	UserService us = new UserService();
 	private resultCause resultCause = new resultCause();
 	private UserInfo userInfo;
+	private HttpServletRequest req;
 
 	public resultCause getResultCause() {
 		return resultCause;
@@ -32,16 +39,19 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String add() {
-		/*
-		 * userInfo = new UserInfo(); userInfo.setId(7); userInfo.setName("张7");
-		 */
-
 		// 如果是异步提交json格式，必须先在js中对提交的表单form进行序列化
 		// var params = $("subUserForm").serialize();
-		us.addUser(userInfo);
-		System.out.println("comehere!!!!! ohyeah");
-		resultCause.setResultCode("200");
-		resultCause.setResultDesc("add successfully!");
+		if(us.addUser(userInfo)){
+			System.out.println("add user succcessfully");
+			resultCause.setResultCode("200");
+			resultCause.setResultDesc("add successfully!");
+			req = ServletActionContext.getRequest();
+			req.getSession().setAttribute("user", userInfo);
+		}else{
+			System.out.println("add user failed");
+			resultCause.setResultCode("408");
+			resultCause.setResultDesc("add failed!");
+		}
 		return "ADD_SUCCESS";
 	}
 
@@ -53,10 +63,26 @@ public class UserAction extends ActionSupport {
 			resultCause.setResultCode("200");
 			resultCause.setResultDesc("The new user is available.");
 		}
-
 		System.out.println("comehere!!!!! checkUsername");
-
-		return "checkName";
+		return "CHECK_NAME";
+	}
+	
+	public String loginIn() {
+		UserInfo usInfo = us.getUserInfo(UserInfo.class, userInfo.getUsername());
+		if(usInfo == null){
+			resultCause.setResultCode("404");
+			resultCause.setResultDesc("No such user registed!");
+		} else if (usInfo.getPassword().equals(userInfo.getPassword())) {
+			resultCause.setResultCode("200");
+			resultCause.setResultDesc("User login info is correct.");
+			req = ServletActionContext.getRequest();
+			req.getSession().setAttribute("user", userInfo);
+		}else {
+			resultCause.setResultCode("403");
+			resultCause.setResultDesc("User passwd is not correct!");
+		}
+		System.out.println("comehere!!!!! loginIn!");
+		return "LOGIN_IN";
 	}
 
 }

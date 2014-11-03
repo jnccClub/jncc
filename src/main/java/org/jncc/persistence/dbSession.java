@@ -60,10 +60,9 @@ public class dbSession {
 	}
 
 	// 插入
-	public static boolean insert(Object obj) {
+	public static void insert(Object obj) {
 		init();
 		session.save(obj);
-		return true;
 	}
 
 	static SessionFactory sessionFactory;

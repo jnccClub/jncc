@@ -1,0 +1,102 @@
+.mainFrame_Login {
+	position: absolute;
+	top: 400px;
+	left: 50%;
+	width: 360px;
+	height: 250px;
+	margin-top: -150px;
+	margin-left: -250px;
+	/*border: 1px solid red;*/
+	line-height: 30px;
+	font-size: 16px;
+	text-align: center;
+	background-color: transparent;
+	background-image: url("../image/background/loginBg.jpg");
+	display:none;
+}
+
+
+
+.signupFrame {
+	background-image: url("../image/background/bg.jpg");
+	marginleft: 0 auto;
+	width: 470px;
+	display: none;
+}
+
+.signupLabel {
+	width: 110px;
+	text-align: right;
+	font-family: '微软雅黑', '宋体', '隶书', '华文中宋', '仿宋';
+	font-size: 15px;
+}
+
+.signupInput {
+	width: 100px;
+	font-family: '微软雅黑', '宋体', '隶书', '华文中宋', '仿宋';
+	font-size: 15px;
+}
+
+.signup_errTips {
+	background: /*#FF99FF*/ url(../image/background/err.jpg) no-repeat 10px
+		50%;
+	width: 90px;
+	text-align: left;
+	font-family: '微软雅黑', '宋体', '隶书', '华文中宋', '仿宋';
+	font-size: 12px;
+	opacity: 0.6;
+	z-index: 12;
+	border-radius: 10px;
+	padding-left: 25px;
+}
+
+.signup_correctTips {
+	background: /*#66FF66*/ url(../image/background/correct.jpg) no-repeat
+		10px 50%;
+	width: 100px;
+	text-align: left;
+	font-family: '微软雅黑', '宋体', '隶书', '华文中宋', '仿宋';
+	font-size: 12px;
+	opacity: 0.7;
+	z-index: 12;
+	border-radius: 10px;
+	padding-left: 25px;
+}
+
+#logOutEntry {
+	color: blue;
+	float: right;
+	width: 100px;
+	margin: 1px -18% 5px;
+	font-size: 14px;
+	display:none;
+}
+
+#loginEntry {
+	float: right;
+	width: 25%;
+	margin: 1px -15% 5px;
+	font-size: 17px;
+}
+
+.loginLabel {
+	width: 30px;
+	text-align: right;
+	height: 40px;
+	font-family: '微软雅黑', '宋体', '隶书', '华文中宋', '仿宋';
+	font-size: 18px;
+}
+
+.loginInput {
+	width: 100px;
+	height: 40px;
+	font-family: '微软雅黑', '宋体', '隶书', '华文中宋', '仿宋';
+	font-size: 18px;
+}
+
+#loginErrTips{
+	width: 80%;
+	font-size: 11px;
+	color: #ed1941;
+}
+

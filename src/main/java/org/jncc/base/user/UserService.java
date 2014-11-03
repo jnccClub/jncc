@@ -17,9 +17,14 @@ public class UserService {
 		return users;
 	}
 
-	public void addUser(UserInfo userInfo) {
-		dbSession.insert(userInfo);
-		dbSession.close();
+	public boolean addUser(UserInfo userInfo) {
+		try {
+			dbSession.insert(userInfo);
+			dbSession.close();
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 
 	public boolean IsExistUser(Class<UserInfo> clazz, String userName) {
@@ -28,5 +33,12 @@ public class UserService {
 			IsExist = true;
 		dbSession.close();
 		return IsExist;
+	}
+
+	public UserInfo getUserInfo(Class<UserInfo> clazz, String userName) {
+		UserInfo usInfo;
+		usInfo = (UserInfo) dbSession.load(clazz, userName);
+		dbSession.close();
+		return usInfo;
 	}
 }

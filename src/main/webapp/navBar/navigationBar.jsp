@@ -38,6 +38,8 @@
 	color: #0C77CF;
 	font-weight: bold;
 	margin-left: 0px;
+	float:left;
+	width:40%;
 }
 
 #scroll_div{
@@ -77,6 +79,9 @@
 			}
 		}
 	</script>
+	
+	
+
 	<div id="gongao">
 		<div id="scroll_div" class="scroll_div">
 			<div id="scroll_begin">welcome to jnccClub, teachers!</div>
@@ -85,6 +90,13 @@
 		<script type="text/javascript">
 			ScrollImgLeft();
 		</script>
+	</div>
+	
+	<div id="loginEntry">
+		<a href="javarscript:(0)" >登录/注册</a>
+	</div>
+	<div id="logOutEntry">
+		<a href='javarscript:(0)'>退出</a>
 	</div>
 
 	<!-- <div style="clear:both;height:20px;text-align: left;margin-left: 35px;width:700px">welcome to jnccClub</div> -->

@@ -23,24 +23,31 @@
 <script>
 	$(document).ready(function() {
 		$("#addUser").click(function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
-			var checkboxNameList = new Array();
-			checkboxNameList[0] = "userGift";
-			var params = $("#subUserForm").serializeArray();
-			$.ajax({
-				url : 'user/user_add.action',
-				type : 'post',
-				data : params,
-				dataType : 'json',
-				success : function(data) {
-					alert("addUser happened!");
-				}
-			});
+				var params = $("#subUserForm").serializeArray();
+				$.ajax({
+					url : 'user/user_add.action',
+					type : 'post',
+					data : params,
+					dataType : 'json',
+					success : function(data) {
+						if (data.resultCode.toString() == "200") {
+							//alert("恭喜，登录成功！");
+							userName = $("#singUpUsername").val();
+							$("#loginEntry").html("欢迎您，"+userName+"！&nbsp;&nbsp;");
+							$("#logOutEntry").show();
+							reNewMainId("#mainFrame_Body");
+						}else{
+							alert("用户添加异常，请重新注册或联系管理员，谢谢！");
+						}
+					}
+				});
 		});
-		$("input[name='userInfo.username']").blur(function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
+		$("#singUpUsername").blur(function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
 			var params = $(this).serializeArray();
 			if (invalidUsername($(this).val().trim())) {
 				$("#nameValidate").removeClass().addClass("signup_errTips");
 				$("#nameValidate").show();
+				$("#addUser").attr('disabled',"true");
 				return false;
 			}
 			$.ajax({
@@ -52,9 +59,11 @@
 					if (data.resultCode.toString() == "200") {
 						$("#nameValidate").removeClass().addClass("signup_correctTips");
 						$("#nameValidate").html("恭喜，用户名可用");
+						$("#addUser").removeAttr("disabled");
 					} else {
 						$("#nameValidate").removeClass().addClass("signup_errTips");
 						$("#nameValidate").html("用户名已经注册");
+						$("#addUser").attr('disabled',"true");
 					}
 					$("#nameValidate").show();
 				}
@@ -64,29 +73,33 @@
 			//$("#nameValidate").addClass("loadingIcon");
 			$("#nameValidate").show();
 		}
-	});
+		$("#signUpJump2LoginIn").click(function() {
+			reNewMainId("#mainFrame_Login");
+		});
+		
 </script>
 
-<div style="clear:both;height:8px;background-color: transparent;"></div>
 
-<div class="signupFrame">
+
+<div class="signupFrame" id="mainFrame_SignUp">
+	<div style="clear:both;height:8px;background-color: transparent;"></div>
 	<br>
 	<table bordercolorlight="#000000" cellspacing="0" id="table1"
 		height="358" cellpadding="0">
 		<form id="subUserForm">
 			<tr>
-				<th colspan="2" height="37">
-					<p align="center">
-						New to jnccClub? &nbsp;&nbsp;<font color="blue"> Signup to
-							join us!</font>
+				<th colspan="3" height="15px">
+					<p align="center" style="font-size:5 px">
+						Already have account? &nbsp;&nbsp;<a href="javascript:(0)"
+							id="signUpJump2LoginIn">Come to login in!</a>
 					</p>
 				</th>
 			</tr>
 			<tr>
 				<td>学号/工号：</td>
 				<td><input type="text" name="userInfo.username" size="13"
-					placeholder='学号/工号'></td>
-				<td id="nameValidate" style="display:none"></td>
+					placeholder='学号/工号' id="singUpUsername"></td>
+				<td id="nameValidate"></td>
 			</tr>
 
 			<tr>
@@ -111,7 +124,7 @@
 				<td><input type="text" name="userInfo.birth" id="timeBirth"
 					onclick="MyCalendar.SetDate(this)" value="1990-01-01" /></td>
 			</tr>
-		<!-- 
+			<!-- 
 			<tr>
 				<td>SchoolNo：</td>
 				<td><input type="text" name="userInfo.schoolno" size="9"
@@ -137,11 +150,7 @@
 				<td>Preference：</td>
 				<td><input type="checkbox" name="userInfo.preference"
 					value="HTML" checked>Html&nbsp; <input type="checkbox"
-					name="userInfo.preference" value="CSS" checked>CSS&nbsp;<input
-					type="checkbox" name="userInfo.preference" value="JSP">JSP&nbsp;<input
-					type="checkbox" name="userInfo.preference" value="SERVER">SERVER&nbsp;
-					<input type="checkbox" name="userInfo.preference" value="UCD"
-					checked>UCD</td>
+					name="userInfo.preference" value="CSS" checked>CSS&nbsp;</td>
 			</tr>
 			<tr>
 				<td>Hobbies：</td>
@@ -159,8 +168,8 @@
 			<tr>
 				<td colspan="2" height="38">
 					<p align="center">
-						<input type="submit" value="Signup" id="addUser"> <input
-							type="reset" value="Reset">
+						<input type="button" value="Signup" id="addUser" disabled="true">
+						<input type="reset" value="Reset">
 					</p>
 				</td>
 			</tr>
@@ -168,13 +177,13 @@
 	</table>
 </div>
 <script>
-	$(document).ready(function() {
-		$("table tr").each(function() {
-			//$("td:eq(0)").addClass("signupLabel");
-			//$("td:eq(1)").addClass("signupInput");
-			//$("td:eq(2)").addClass("signupTips");
-			$(this).children("td:eq(0)").addClass("signupLabel");
-			$(this).children("td:eq(1)").addClass("signupInput");
-		});
+$(document).ready(function() {
+	$("table tr").each(function() {
+		//$("td:eq(0)").addClass("signupLabel");
+		//$("td:eq(1)").addClass("signupInput");
+		//$("td:eq(2)").addClass("signupTips");
+		$(this).children("td:eq(0)").addClass("signupLabel");
+		$(this).children("td:eq(1)").addClass("signupInput");
 	});
+});
 </script>
