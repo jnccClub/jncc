@@ -16,6 +16,20 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`test` /*!40100 DEFAULT CHARACTER SET la
 
 USE `test`;
 
+/*Table structure for table `e_application` */
+
+DROP TABLE IF EXISTS `e_application`;
+
+CREATE TABLE `e_application` (
+  `applicationID` varchar(32) NOT NULL,
+  `curentHandler` varchar(32) NOT NULL,
+  `processIDList` varchar(512) NOT NULL,
+  `title` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`applicationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `e_application` */
+
 /*Table structure for table `e_member` */
 
 DROP TABLE IF EXISTS `e_member`;
@@ -25,7 +39,7 @@ CREATE TABLE `e_member` (
   `realname` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
   `password` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   `sex` varchar(11) CHARACTER SET utf8 DEFAULT '0',
-  `birth` date DEFAULT NULL,
+  `birth` date DEFAULT '1990-01-01',
   `schoolno` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   `phoneno` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   `email` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
@@ -38,7 +52,7 @@ CREATE TABLE `e_member` (
 
 /*Data for the table `e_member` */
 
-insert  into `e_member`(`username`,`realname`,`password`,`sex`,`birth`,`schoolno`,`phoneno`,`email`,`qq`,`preference`,`hobby`,`selfIntroduce`) values ('jncc','计算中心俱乐部','shenghuo','male','1990-01-01','161210327','13888888888','zhuhaohan@nuaa.edu.cn','825857104','HTML, CSS, UCD','javaDev',''),('test','计算中心俱乐部','jncc','male','1990-01-01','161210327','13888888888','zhuhaohan@nuaa.edu.cn','825857104','HTML, CSS, UCD','javaDev','');
+insert  into `e_member`(`username`,`realname`,`password`,`sex`,`birth`,`schoolno`,`phoneno`,`email`,`qq`,`preference`,`hobby`,`selfIntroduce`) values ('1111','','','male','1990-01-01',NULL,'','','','HTML, CSS, UCD','javaDev',''),('70206317','计算中心俱乐部','shenghuo','male','1990-01-01',NULL,'','','','HTML, CSS, UCD','javaDev',''),('7020631711','计算中心俱乐部','shenghuo','female','1990-01-01',NULL,'','','','HTML, CSS, UCD','javaDev',''),('jncc','计算中心俱乐部','shenghuo','male','1990-01-01','161210327','13888888888','zhuhaohan@nuaa.edu.cn','825857104','HTML, CSS, UCD','javaDev',''),('test','计算中心俱乐部','jncc','male','1990-01-01','161210327','13888888888','zhuhaohan@nuaa.edu.cn','825857104','HTML, CSS, UCD','javaDev','');
 
 /*Table structure for table `hibernatetest` */
 
@@ -85,6 +99,19 @@ CREATE TABLE `news` (
 /*Data for the table `news` */
 
 insert  into `news`(`NO`,`NewsTitle`,`Modifytime`,`Createtime`,`NewsContent`) values (3,'test1','2013-11-24 19:37:17','2013-11-24 19:37:17','<p>&#27861;&#24072;&#25171;&#21457;&#22763;&#22823;&#22827;</p>'),(4,'test2','2013-11-24 19:42:28','2013-11-24 19:42:28','<ol class=\" list-paddingleft-2\" style=\"list-style-type: decimal;\">\r\n    <li>\r\n        <p>\r\n            <span style=\"color: rgb(255, 0, 0);\"><strong><em><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: underline;\">i love china so much</span></em></strong></span>\r\n        </p>\r\n    </li>\r\n</ol>'),(5,'test3','2013-11-24 19:42:28','2013-11-24 19:45:36','Nothing3'),(7,'test520','2013-11-24 19:42:28','2013-11-24 19:53:33','Nothing');
+
+/*Table structure for table `processtype` */
+
+DROP TABLE IF EXISTS `processtype`;
+
+CREATE TABLE `processtype` (
+  `processID` varchar(32) NOT NULL,
+  `processType` varchar(32) DEFAULT NULL,
+  `processContent` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`processID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `processtype` */
 
 /*Table structure for table `student` */
 
