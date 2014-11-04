@@ -43,25 +43,21 @@ public class UserAction extends ActionSupport {
 		// var params = $("subUserForm").serialize();
 		if(us.addUser(userInfo)){
 			System.out.println("add user succcessfully");
-			resultCause.setResultCode("200");
-			resultCause.setResultDesc("add successfully!");
+			resultCause.setCause("200","add successfully!");
 			req = ServletActionContext.getRequest();
 			req.getSession().setAttribute("user", userInfo);
 		}else{
 			System.out.println("add user failed");
-			resultCause.setResultCode("408");
-			resultCause.setResultDesc("add failed!");
+			resultCause.setCause("408","add failed!");
 		}
 		return "ADD_SUCCESS";
 	}
 
 	public String checkUsername() {
 		if (us.IsExistUser(UserInfo.class, userInfo.getUsername())) {
-			resultCause.setResultCode("302");
-			resultCause.setResultDesc("The new user is alread existed.");
+			resultCause.setCause("302","The new user is alread existed.");
 		} else {
-			resultCause.setResultCode("200");
-			resultCause.setResultDesc("The new user is available.");
+			resultCause.setCause("200","The new user is available.");
 		}
 		System.out.println("comehere!!!!! checkUsername");
 		return "CHECK_NAME";
@@ -70,16 +66,13 @@ public class UserAction extends ActionSupport {
 	public String loginIn() {
 		UserInfo usInfo = us.getUserInfo(UserInfo.class, userInfo.getUsername());
 		if(usInfo == null){
-			resultCause.setResultCode("404");
-			resultCause.setResultDesc("No such user registed!");
+			resultCause.setCause("404","No such user registed!");
 		} else if (usInfo.getPassword().equals(userInfo.getPassword())) {
-			resultCause.setResultCode("200");
-			resultCause.setResultDesc("User login info is correct.");
+			resultCause.setCause("200","User login info is correct.");
 			req = ServletActionContext.getRequest();
 			req.getSession().setAttribute("user", userInfo);
 		}else {
-			resultCause.setResultCode("403");
-			resultCause.setResultDesc("User passwd is not correct!");
+			resultCause.setCause("403","User passwd is not correct!");
 		}
 		System.out.println("comehere!!!!! loginIn!");
 		return "LOGIN_IN";

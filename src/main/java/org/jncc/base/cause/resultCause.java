@@ -5,7 +5,11 @@ public class resultCause {
 		return resultCode;
 	}
 
-
+	public void setCause(String resultCode,String resultDesc){
+		setResultCode(resultCode);
+		setResultDesc(resultDesc);
+	}
+	
 	public void setResultCode(String resultCode) {
 		this.resultCode = resultCode;
 	}
