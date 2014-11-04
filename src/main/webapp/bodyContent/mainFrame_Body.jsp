@@ -10,11 +10,7 @@
 
 <div id="mainFrame_Body">
 
-	<form id="form1" runat="server">
-		<iframe src="bodyContent/2012.xlsx" width="100%" height="600px" runat="server"
-			id="iframedoc"></iframe>
-	</form>
-
+tests放松放松
 
 
 

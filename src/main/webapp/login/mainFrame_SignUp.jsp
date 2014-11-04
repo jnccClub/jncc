@@ -1,3 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%--  
   Created by jncc hpf.  
   User: hpf  
@@ -5,8 +11,6 @@
   Time: 下午3:46  
   To change this template use File | Settings | File Templates.  
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <script type="text/javascript">
 	function invalidUsername(username) {
 		if (username == null || username.length == 0) {
@@ -21,65 +25,66 @@
 	}
 </script>
 <script>
-	$(document).ready(function() {
-		$("#addUser").click(function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
-				var params = $("#subUserForm").serializeArray();
-				$.ajax({
-					url : 'user/user_add.action',
-					type : 'post',
-					data : params,
-					dataType : 'json',
-					success : function(data) {
-						if (data.resultCode.toString() == "200") {
-							//alert("恭喜，登录成功！");
-							userName = $("#singUpUsername").val();
-							$("#loginEntry").html("欢迎您，"+userName+"！&nbsp;&nbsp;");
-							$("#logOutEntry").show();
-							reNewMainId("#mainFrame_Body");
-						}else{
-							alert("用户添加异常，请重新注册或联系管理员，谢谢！");
+$(document).ready(function() {
+
+	$("#addUser").click(
+						function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
+							var params = $("#subUserForm").serializeArray();
+							$.ajax({
+								url : 'user/user_add.action',
+								type : 'post',
+								data : params,
+								dataType : 'json',
+								success : function(data) {
+									if (data.resultCode.toString() == "200") {
+										//alert("恭喜，登录成功！");
+										userName = $("#singUpUsername").val();
+										$("#loginEntry").html("欢迎您，" + userName + "！&nbsp;&nbsp;");
+										$("#logOutEntry").show();
+										reNewMainId("#mainFrame_Body");
+									} else {
+										alert("用户添加异常，请重新注册或联系管理员，谢谢！");
+									}
+								}
+							});
+						});
+
+	$("#singUpUsername").blur(function() {	// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
+						var params = $(this).serializeArray();
+						if (invalidUsername($(this).val().trim())) {
+							$("#nameValidate").removeClass().addClass("signup_errTips");
+							$("#nameValidate").show();
+							$("#addUser").attr('disabled', "true");
+							return false;
 						}
-					}
-				});
-		});
-		$("#singUpUsername").blur(function() {// 必须先对提交表单数据数据进行序列化，采用jQuery的serialize()方法
-			var params = $(this).serializeArray();
-			if (invalidUsername($(this).val().trim())) {
-				$("#nameValidate").removeClass().addClass("signup_errTips");
-				$("#nameValidate").show();
-				$("#addUser").attr('disabled',"true");
-				return false;
-			}
-			$.ajax({
-				url : 'user/user_checkUsername.action',
-				type : 'post',
-				data : params,
-				dataType : 'json',
-				success : function(data) {
-					if (data.resultCode.toString() == "200") {
-						$("#nameValidate").removeClass().addClass("signup_correctTips");
-						$("#nameValidate").html("恭喜，用户名可用");
-						$("#addUser").removeAttr("disabled");
-					} else {
-						$("#nameValidate").removeClass().addClass("signup_errTips");
-						$("#nameValidate").html("用户名已经注册");
-						$("#addUser").attr('disabled',"true");
-					}
-					$("#nameValidate").show();
-				}
-			});
-		});
-		function loadingShow() {
-			//$("#nameValidate").addClass("loadingIcon");
-			$("#nameValidate").show();
-		}
-		$("#signUpJump2LoginIn").click(function() {
-			reNewMainId("#mainFrame_Login");
-		});
-		
+						$.ajax({
+							url : 'user/user_checkUsername.action',
+							type : 'post',
+							data : params,
+							dataType : 'json',
+							success : function(data) {
+								if (data.resultCode.toString() == "200") {
+									$("#nameValidate").removeClass().addClass("signup_correctTips");
+									$("#nameValidate").html("恭喜，用户名可用");
+									$("#addUser").removeAttr("disabled");
+								} else {
+									$("#nameValidate").removeClass().addClass("signup_errTips");
+									$("#nameValidate").html("用户名已经注册");
+									$("#addUser").attr('disabled', "true");
+								}
+								$("#nameValidate").show();
+							}
+						});
+					});
+	$("table tr").each(function() {
+		//$("td:eq(0)").addClass("signupLabel");
+		//$("td:eq(1)").addClass("signupInput");
+		//$("td:eq(2)").addClass("signupTips");
+		$(this).children("td:eq(0)").addClass("signupLabel");
+		$(this).children("td:eq(1)").addClass("signupInput");
+	});
+});
 </script>
-
-
 
 <div class="signupFrame" id="mainFrame_SignUp">
 	<div style="clear:both;height:8px;background-color: transparent;"></div>
@@ -176,14 +181,3 @@
 		</form>
 	</table>
 </div>
-<script>
-$(document).ready(function() {
-	$("table tr").each(function() {
-		//$("td:eq(0)").addClass("signupLabel");
-		//$("td:eq(1)").addClass("signupInput");
-		//$("td:eq(2)").addClass("signupTips");
-		$(this).children("td:eq(0)").addClass("signupLabel");
-		$(this).children("td:eq(1)").addClass("signupInput");
-	});
-});
-</script>

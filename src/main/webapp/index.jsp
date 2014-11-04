@@ -37,8 +37,6 @@
 			currentShowID = newId;
 			$(currentShowID).show();
 		}
-	
-		
 	</script>
 	<jsp:include page="navBar/navigationBar.jsp"></jsp:include>
 	<jsp:include page="login/mainFrame_Login.jsp"></jsp:include>

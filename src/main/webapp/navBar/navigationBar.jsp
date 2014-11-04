@@ -25,10 +25,7 @@
 		</a>
 	</div>
 
-
-
-
-	<style type="text/css">
+<style type="text/css">
 #gongao {
 	height: 20px;
 	overflow: hidden;
@@ -49,7 +46,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-align: left;
-	float: left
+	float: left;
 }
 
 #gongao #scroll_begin,#gongao #scroll_end {
@@ -57,7 +54,7 @@
 	text-align: left;
 }
 </style>
-	<script type="text/javascript">
+<script type="text/javascript">
 		function ScrollImgLeft() {
 			var speed = 50;
 			var scroll_begin = document.getElementById("scroll_begin");

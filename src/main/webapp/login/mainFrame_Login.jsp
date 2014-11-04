@@ -15,7 +15,7 @@
 			height="200" cellpadding="0">
 			<tr>
 				<th colspan="2" height="37">
-					<p align="center">
+					<p >
 						New to jnccClub? &nbsp;&nbsp; <a href="javascript:(0)" id="loginJump2SignUp">Signup
 							to join us!</a>
 					</p>
