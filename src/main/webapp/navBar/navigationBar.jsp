@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <div class="container">
 	<ul id="gn-menu" class="gn-menu-main">
-		<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+		<li class="gn-trigger"><a class="gn-icon gn-icon-menu"><span>个人中心</span></a>
 			<nav class="gn-menu-wrapper">
 				<div class="gn-scroller">
 					<ul class="gn-menu">

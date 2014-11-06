@@ -13,16 +13,17 @@
     <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
     <meta name="author" content="Codrops" />
     <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/nav/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="css/nav/demo.css" />
-    <link rel="stylesheet" type="text/css" href="css/nav/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    
     <script src="js/nav/modernizr.custom.js"></script>
     <script src="js/nav/classie.js"></script>
     <script src="js/nav/gnmenu.js"></script>
 </head>
 <body>
 	<jsp:include page="navBar/navigationBar.jsp"></jsp:include>
-	
+	<jsp:include page="login/mainFrame_Login.jsp"></jsp:include>
+	<jsp:include page="login/mainFrame_SignUp.jsp"></jsp:include>
+	<jsp:include page="bodyContent/mainFrame_Body.jsp"></jsp:include>
 	<script>
 		var currentShowID = "#mainFrame_Body";
 		var userName = "test";
