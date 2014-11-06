@@ -1,28 +1,18 @@
 @import url(common/bootstrap.css);
 
+@import url(button/rotateButton.css);
+
 @import url(homepage/homepage.css);
+
+@import url(tips/tips.css);
 
 @import url(mainFrame_Login.css);
 
 @import url(mainFrame_Body.css);
 
+@import url(nav/normalize.css);
 
-body div {
-	margin-left: AUTO;
-	margin-right: AUTO;
-	background-color: #e0e0e0;
-	/*  *position: relative;*/
-	/*  *z-index: 10;*/
-	margin-top: 0px;
-	width: 960px;
-	/*  margin: 10px 3% 0 3%;*/
-	text-align: center;
-	font-size: 13px;
-	font-family: '微软雅黑', '宋体', '隶书', '华文中宋', '仿宋';
-}
+@import url(nav/demo.css);
 
-input:focus {
-	color: #ed1941;
-	border: 1px solid #2468a2;
-	background-color: #afdfe4;
-}
+@import url(nav/component.css);
+

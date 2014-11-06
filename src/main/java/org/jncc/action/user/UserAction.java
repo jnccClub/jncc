@@ -20,7 +20,7 @@ public class UserAction extends ActionSupport {
 	UserService us = new UserService();
 	private resultCause resultCause = new resultCause();
 	private UserInfo userInfo;
-	private HttpServletRequest req;
+//	private HttpServletRequest req;
 
 	public resultCause getResultCause() {
 		return resultCause;
@@ -44,8 +44,11 @@ public class UserAction extends ActionSupport {
 		if(us.addUser(userInfo)){
 			System.out.println("add user succcessfully");
 			resultCause.setCause("200","add successfully!");
-			req = ServletActionContext.getRequest();
-			req.getSession().setAttribute("user", userInfo);
+			 Map session = ActionContext.getContext().getSession();
+			 session.put("userInfo", userInfo);
+//			req = ServletActionContext.getRequest();
+//			req.getSession().setAttribute("user", userInfo);
+			 
 		}else{
 			System.out.println("add user failed");
 			resultCause.setCause("408","add failed!");
@@ -69,8 +72,10 @@ public class UserAction extends ActionSupport {
 			resultCause.setCause("404","No such user registed!");
 		} else if (usInfo.getPassword().equals(userInfo.getPassword())) {
 			resultCause.setCause("200","User login info is correct.");
-			req = ServletActionContext.getRequest();
-			req.getSession().setAttribute("user", userInfo);
+			 Map session = ActionContext.getContext().getSession();
+			 Object obj = session.get("userInfo");
+			 session.put("userInfo", userInfo);
+			 int i = 3;
 		}else {
 			resultCause.setCause("403","User passwd is not correct!");
 		}

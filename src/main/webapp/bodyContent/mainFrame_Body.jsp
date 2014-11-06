@@ -10,8 +10,4 @@
 
 <div id="mainFrame_Body">
 
-tests放松放松
-
-
-
 </div>

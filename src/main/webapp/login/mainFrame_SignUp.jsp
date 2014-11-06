@@ -41,7 +41,7 @@ $(document).ready(function() {
 										userName = $("#singUpUsername").val();
 										$("#loginEntry").html("欢迎您，" + userName + "！&nbsp;&nbsp;");
 										$("#logOutEntry").show();
-										reNewMainId("#mainFrame_Body");
+										renewMainId("#mainFrame_Body");
 									} else {
 										alert("用户添加异常，请重新注册或联系管理员，谢谢！");
 									}
@@ -82,6 +82,10 @@ $(document).ready(function() {
 		//$("td:eq(2)").addClass("signupTips");
 		$(this).children("td:eq(0)").addClass("signupLabel");
 		$(this).children("td:eq(1)").addClass("signupInput");
+	});
+	
+	$("#signUpJump2LoginIn").click(function(){
+		renewMainId("#mainFrame_Login");
 	});
 });
 </script>
@@ -172,12 +176,17 @@ $(document).ready(function() {
 			</tr>
 			<tr>
 				<td colspan="2" height="38">
-					<p align="center">
-						<input type="button" value="Signup" id="addUser" disabled="true">
-						<input type="reset" value="Reset">
-					</p>
+						<input type="reset" value="Reset" style="display:none">
 				</td>
 			</tr>
+			<tr >
+				<td colspan="2" height="38">
+				<a target="_blank" class="btn-fold-1" href="javascript:(0)" id="addUser"><span>确认</span><span>提交信息</span> </a>
+				<a target="_blank" class="btn-fold-2" href="javascript:(0)"><span>重</span><span>信息</span></a>
+				</td>
+			<tr>
 		</form>
 	</table>
 </div>
+
+
